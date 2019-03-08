@@ -20,7 +20,8 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.15.3",
-    "express-handlebars": "^3.0.2"
+    "express-handlebars": "^3.0.2",
+    "fs-extra": "^7.0.1"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
