@@ -31,10 +31,12 @@ app.get("/my-cv", (req, res) => {
 });
 
 app.get("/post/:postId", (req, res) => {
+  const postId = req.params.postId;
+
   fs.readJson("./data/blogPosts.json")
     .then(blogPosts =>
       res.render("post-view", {
-        blogPost: blogPosts[req.params.postId]
+        blogPost: blogPosts[postId]
       }));
 });
 
@@ -50,6 +52,18 @@ app.post("/post", (req, res) => {
     .then(updatedBlogPosts => fs.writeJson("./data/blogPosts.json", updatedBlogPosts))
     .then(() => res.redirect("/"))
 });
+
+app.delete("/post/:postId", (req, res) => {
+  const postId = req.params.postId;
+  
+  fs.readJson("./data/blogPosts.json")
+    .then(blogPosts => {
+      blogPosts.splice(postId, 1)
+      return blogPosts;
+    })
+    .then(updatedBlogPosts => fs.writeJson("./data/blogPosts.json", updatedBlogPosts))
+    .then(() => res.redirect("/"))
+})
 
 const SERVER_PORT = process.env.PORT || 3000;
 app.listen(SERVER_PORT, function() {
