@@ -39,8 +39,11 @@ app.get("/composepost", (req, res) => {
 });
 
 app.post("/post", (req, res) => {
-  console.log(req.body)
-  res.send('received')
+  const newPost = req.body;
+
+  blogPosts.push(newPost);
+
+  res.redirect('/');
 })
 
 const SERVER_PORT = process.env.PORT || 3000;
