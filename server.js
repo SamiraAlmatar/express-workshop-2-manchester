@@ -25,6 +25,10 @@ app.get("/my-cv", (req, res) => {
   });
 });
 
+app.get("/post/:postId", (req, res) => {
+  res.render("post-view");
+})
+
 const SERVER_PORT = process.env.PORT || 3000;
 app.listen(SERVER_PORT, function() {
   console.log(
