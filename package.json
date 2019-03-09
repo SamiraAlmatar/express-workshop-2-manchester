@@ -1,6 +1,6 @@
 {
   "name": "express-workshop",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "This is the exercise that accompanies the first Node class. Based on the Node Girls Workshop https://github.com/node-girls/express-workshop",
   "scripts": {
     "start": "node server.js",
@@ -17,6 +17,9 @@
     "url": "https://github.com/CodeYourFuture/express-workshop/issues"
   },
   "homepage": "https://github.com/CodeYourFuture/express-workshop#readme",
+  "engines": {
+    "node": "10.x"
+  },
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.15.3",
