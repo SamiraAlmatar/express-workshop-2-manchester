@@ -14,12 +14,25 @@ app.use(express.static(__dirname +"/public/"));
 //middleware to read request body of formdata
 app.use(bodyParser.urlencoded({ extended : true}));
 
+//open the home page route
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/views/index.html");
+  fs.readJson("./data/blogPosts.json")
+    .then(posts=>{
+      //res.setHeader('Last-Modified', (new Date()).toUTCString());
+      res.render('index',{
+        Myname : 'Samira',
+        page : 'Home',
+        name : '<h1>Samira</h1>',
+        date : new Date().toLocaleString(),
+        posts : posts
+      });
 });
-
+//open the cv page
 app.get("/my-cv", (req, res) => {
-  res.sendFile(__dirname + "/views/my-cv.html");
+  res.render('my-cv',{
+    name : '<h2>Resume</h2>',
+    page : 'CV'
+  });
 });
 
 const SERVER_PORT = process.env.PORT || 3000;
