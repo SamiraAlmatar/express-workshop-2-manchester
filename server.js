@@ -36,6 +36,21 @@ app.get("/my-cv", (req, res) => {
   });
 });
 
+//open post with id=x in new page
+app.get("/readpost/:id", (req, res) => {
+  const id = req.params.id;
+  fs.readJson("./data/blogPosts.json")
+    .then(posts =>{
+      res.render('post',
+      {
+        name : '<h2>Posts</h2>',
+        page : 'Post '+(parseInt(id)+1),
+        date : new Date().toLocaleString(),
+        post : posts[id]
+      });
+    });
+});
+
 //open form page to add post
 app.get("/composepost", (req, res) => {
   // res.sendFile(__dirname + "/views/my-cv.html");
