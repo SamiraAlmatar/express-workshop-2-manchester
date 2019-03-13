@@ -61,6 +61,15 @@ app.get("/composepost", (req, res) => {
   });
 });
 
+//save the new post on the blogPost json file
+app.post("/composepost", (req, res) => {
+  const newPost = req.body;
+  fs.readJson("./data/blogPosts.json")
+    .then(blogPosts => blogPosts.concat(newPost))
+    .then(updatedBlogPosts => fs.writeJson("./data/blogPosts.json", updatedBlogPosts))
+    .then(() => res.redirect("/"));
+});
+
 
 const SERVER_PORT = process.env.PORT || 3000;
 app.listen(SERVER_PORT, function() {
