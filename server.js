@@ -3,9 +3,16 @@ const exphbars = require("express-handlebars");
 const bodyParser = require('body-parser');
 const fs = require("fs-extra");
 
-const app = express();
+const app = express(); // initialise the express
 
-app.use(express.static("public"));
+app.engine('handlebars',exphbars()); // initialise the handlebars engine { defaultLayout: "main" }
+app.set('view engine', 'handlebars'); // specify engine for page rendering
+
+//middleware to send static files
+app.use(express.static(__dirname +"/public/"));
+
+//middleware to read request body of formdata
+app.use(bodyParser.urlencoded({ extended : true}));
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
