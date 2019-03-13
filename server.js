@@ -64,12 +64,30 @@ app.get("/composepost", (req, res) => {
 //save the new post on the blogPost json file
 app.post("/composepost", (req, res) => {
   const newPost = req.body;
-  fs.readJson("./data/blogPosts.json")
+  fs.readJson('./data/blogPosts.json')
     .then(blogPosts => blogPosts.concat(newPost))
     .then(updatedBlogPosts => fs.writeJson("./data/blogPosts.json", updatedBlogPosts))
     .then(() => res.redirect("/"));
 });
 
+//delete post
+app.delete('/post/:id', (req, res) => {
+  const id = parseInt(req.params.id);
+  fs.readJson('./data/blogPosts.json')
+    .then(posts =>{
+      console.log(posts)
+      //posts.slice(id, 1);
+     posts.splice(id, 1)
+     return posts
+    })
+    .then(posts => {
+      console.log(posts)
+      fs.writeJson("./data/blogPosts.json", posts)
+    })
+    .then(res.redirect('/'));
+  
+  // res.send(console.log(id));
+});
 
 const SERVER_PORT = process.env.PORT || 3000;
 app.listen(SERVER_PORT, function() {

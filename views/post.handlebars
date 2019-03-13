@@ -15,6 +15,7 @@
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Theme CSS -->
+    <link href="/css/theme.css" rel="stylesheet">
     <link href="../css/theme.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
@@ -45,6 +46,7 @@
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                <div class="post-preview">
+                   
                 {{!-- {{#each post}} --}}
                 <h2 class="post-title">
                     {{post.title}} 
@@ -60,6 +62,7 @@
                     
                 </p>
                 {{!-- {{/each}} --}}
+                <button class="del-btn btn-danger " id="delete">Delete</button>
             </div>
             </div>
         </div>
@@ -78,6 +81,8 @@
 
     <!-- Theme JavaScript -->
     <script src="../js/clean-blog.min.js"></script>
+    <!-- delete post-->
+    <script src="/js/delete-post.js"></script>
 
 </body>
 
