@@ -26,6 +26,7 @@ app.get("/", (req, res) => {
         date : new Date().toLocaleString(),
         posts : posts
       });
+    });
 });
 //open the cv page
 app.get("/my-cv", (req, res) => {
@@ -34,6 +35,17 @@ app.get("/my-cv", (req, res) => {
     page : 'CV'
   });
 });
+
+//open form page to add post
+app.get("/composepost", (req, res) => {
+  // res.sendFile(__dirname + "/views/my-cv.html");
+  res.render('composepost',{
+    name : '<h2>Add Post</h2>',
+    page : 'Posting..',
+    date : new Date().toLocaleString()
+  });
+});
+
 
 const SERVER_PORT = process.env.PORT || 3000;
 app.listen(SERVER_PORT, function() {
