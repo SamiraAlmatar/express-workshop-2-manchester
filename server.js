@@ -46,7 +46,8 @@ app.get("/readpost/:id", (req, res) => {
         name : '<h2>Posts</h2>',
         page : 'Post '+(parseInt(id)+1),
         date : new Date().toLocaleString(),
-        post : posts[id]
+        post : posts[id],
+        id : id
       });
     });
 });
@@ -63,7 +64,16 @@ app.get("/composepost", (req, res) => {
 
 //save the new post on the blogPost json file
 app.post("/composepost", (req, res) => {
-  const newPost = req.body;
+  const newPost ={
+    title : req.body.title,
+    summary : req.body.summary,
+    content : req.body.content,
+    react :{
+      like: 0,
+      dislike: 0
+    }
+  }
+  
   fs.readJson('./data/blogPosts.json')
     .then(blogPosts => blogPosts.concat(newPost))
     .then(updatedBlogPosts => fs.writeJson("./data/blogPosts.json", updatedBlogPosts))
@@ -80,6 +90,32 @@ app.delete('/post/:id', (req, res) => {
     })
     .then(posts => fs.writeJson("./data/blogPosts.json", posts))
     .then(res.redirect('/'));
+});
+
+//like post 
+app.post('/like/:id', (req,res) =>{
+  const id = req.params.id;
+  fs.readJson('./data/blogPosts.json')
+    .then(posts => {
+      console.log(posts);
+      posts[id].react.like+= 1;
+      return posts;
+    })
+    .then(posts => fs.writeJson("./data/blogPosts.json", posts))
+    .then(res.send(200));
+});
+
+//like post 
+app.post('/dislike/:id', (req,res) =>{
+  const id = req.params.id;
+  fs.readJson('./data/blogPosts.json')
+    .then(posts => {
+      console.log(posts);
+      posts[id].react.dislike+= 1;
+      return posts;
+    })
+    .then(posts => fs.writeJson("./data/blogPosts.json", posts))
+    .then(res.send(200));
 });
 
 const SERVER_PORT = process.env.PORT || 3000;

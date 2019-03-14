@@ -10,6 +10,8 @@
     <meta name="author" content="">
 
     <title>Samira Profile</title>
+    <!-- fontawsom-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -62,8 +64,21 @@
                     
                 </p>
                 {{!-- {{/each}} --}}
-                <button class="del-btn btn-danger " id="delete">Delete</button>
-            </div>
+                
+               
+                </div>
+                <div class="control-bar">
+                    <ul class="react">
+                        <li class="dislike">
+                            <a><i class="far fa-thumbs-down"></i><i id="dislike" data-id="{{id}}">{{post.react.dislike}}</i></a>
+                        </li>
+                        <li class="like">
+                            <a><i class="far fa-thumbs-up"></i><i id="like" data-id="{{id}}">{{post.react.like}}</i></a>
+                        </li>
+                    </ul>
+                    <button class="del-btn btn-danger " id="delete">Delete</button>
+                </div>
+
             </div>
         </div>
     </div>
@@ -82,7 +97,7 @@
     <!-- Theme JavaScript -->
     <script src="../js/clean-blog.min.js"></script>
     <!-- delete post-->
-    <script src="/js/delete-post.js"></script>
+    <script src="/js/user-logic.js"></script>
 
 </body>
 

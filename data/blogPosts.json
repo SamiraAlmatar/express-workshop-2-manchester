@@ -1,14 +1,1 @@
-[
-  {
-    "title": "My first blog post",
-    "summary": "This is a summary of my first blog post",
-    "content": "This is the full content of my first blog post that I published to my own website"
-  },
-  {
-    "title": "My second blog post",
-    "summary": "This is a summary of my second blog post",
-    "content": "This is the full content of my second blog post that I published to my own website"
-  },
-  { "title": "test", "summary": "hi", "content": ":)" }
-]
-    
+[{"title":"My first blog post","summary":"This is a summary of my first blog post","content":"This is the full content of my first blog post that I published to my own website","react":{"like":10,"dislike":2}},{"title":"My second blog post","summary":"This is a summary of my second blog post","content":"This is the full content of my second blog post that I published to my own website","react":{"like":1,"dislike":1}},{"title":"test","summary":"hi","content":":)","react":{"like":0,"dislike":0}}]
